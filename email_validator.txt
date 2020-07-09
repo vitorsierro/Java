@@ -1,0 +1,17 @@
+rem Search for @, @ can not be the first character. Ç
+local integer &pos1, &pos2;
+
+&pos1 = Find("@", &EmailText);
+
+if &pos1 = 1 or &pos1 = 0  then
+error msgget(0,0,"Email Invalido ");
+end-if;
+
+rem Search for dot. Dot needs to be after then @ and can not be the last character.
+
+&pos2 = Find(".", &EmailText, &pos1); /*Your search starts before &pos1 character*/
+
+if &pos2 = 0 or   &pos2 = len(&EmailText) then
+error msgget(0,0,"Email Invalido");
+end-if;
+
