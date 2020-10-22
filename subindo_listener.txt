@@ -1,0 +1,42 @@
+Starting the Listener 
+The listener can be started before or after the database instance is started, it doesn't matter. You can start the listener with a simple lsnrctl start: 
+
+
+bash-2.05$ lsnrctl start
+LSNRCTL for Solaris: Version 10.1.0.2.0 - Production on 11-OCT-2004 15:42:55
+Copyright (c) 1991, 2004, Oracle.  All rights reserved.
+Starting /u01/app/oracle/product/10.1.0/db_1/bin/tnslsnr: please wait...
+
+TNSLSNR for Solaris: Version 10.1.0.2.0 - Production
+System parameter file is /u01/app/oracle/product/10.1.0/db_1/network/
+ admin/listener.ora
+Log messages written to /u01/app/oracle/product/10.1.0/db_1/network/
+ log/listener.log
+Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=10.10.0.130)
+ (PORT=1521)))
+
+Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.10.0.130)
+ (PORT=1521)))
+STATUS of the LISTENER
+------------------------
+Alias                     LISTENER
+Version                   TNSLSNR for Solaris: Version 10.1.0.2.0
+Start Date                11-OCT-2004 15:42:55
+Uptime                    0 days 0 hr. 0 min. 0 sec
+Trace Level               off
+Security                  ON: Local OS Authentication
+SNMP                      OFF
+Listener Parameter File   /u01/app/oracle/product/10.1.0/db_1/network/
+	admin/listener.ora
+Listener Log File         /u01/app/oracle/product/10.1.0/db_1/network/
+	log/listener.log
+Listening Endpoints Summary...
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=10.10.0.130)(PORT=1521)))
+Services Summary...
+Service "test" has 1 instance(s).
+  Instance "test", status UNKNOWN, has 1 handler(s) for this service...
+The command completed successfully
+bash-2.05$
+
+Don't worry about the status being unknown. Thats normal. (Not 100% sure why, but it is.) 
+

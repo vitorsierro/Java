@@ -1,0 +1,1 @@
+ cd $PS_HOME/APPSERV/{BASE}/LOGS

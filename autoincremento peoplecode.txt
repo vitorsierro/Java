@@ -1,0 +1,29 @@
+Local number &Proximo;
+/* verifica se deve auto numerar o campo */
+If MINHA_RECORD.MEU_CAMPO_AUTONUMERACAO.Value = "NEXT" Then
+/* pega o proximo numero livre */
+&Proximo = GetNextNumberWithGapsCommit(RECORD_SETUP.CAMPO, 9999999999, 1);
+/* verifica resultado da geração do proximo numero */
+Evaluate &Proximo
+When %GetNextNumber_SQLFailure
+Error "Não foi possível gerar o próximo número.";
+When %GetNextNumber_TooBig
+Error "Número atingiu o valor máximo: 9.999.999.999";
+When %GetNextNumber_NotFound
+try
+/* cria o setup, pois tabela está vazia */
+Local Record &Record;
+&Record = CreateRecord(Record.RECORD_SETUP);
+&Record.CAMPO.Value = 1;
+&Record.Insert();
+CommitWork();
+/* exibe o numero gerado */
+MINHA_RECORD.MEU_CAMPO_AUTONUMERACAO.Value = 1;
+catch Exception &E
+Error "Não foi possível criar setup de auto-numeração";
+end-try;
+When-Other
+/* exibe o numero gerado */
+MINHA_RECORD.MEU_CAMPO_AUTONUMERACAO.Value = &Proximo;
+End-Evaluate;
+End-If;

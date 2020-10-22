@@ -1,0 +1,13 @@
+Logar na base
+
+Geralmente usuário e senha são psoft
+
+cd $PS_HOME
+
+cd appserv
+
+./psadmin
+
+2 process schedulers
+
+1 start process
