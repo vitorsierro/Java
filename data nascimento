@@ -1,6 +1,0 @@
-Local integer &datanasc;
-&datanasc = TREI_EXER01_VS.DATE_OF_BIRTH;
-
-if &datanasc <= 18 then
-error msgget(0,0,"Você é menor de idade, não pode efetuar o cadastro");
-end-if;
